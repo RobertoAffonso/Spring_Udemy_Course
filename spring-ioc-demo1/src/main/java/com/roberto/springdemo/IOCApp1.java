@@ -1,0 +1,26 @@
+package com.roberto.springdemo;
+
+import java.nio.file.FileSystem;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+
+public class IOCApp1
+{
+
+	public static void main(String[] args)
+	{
+		//create the application context (Container)
+		ApplicationContext ctx = new FileSystemXmlApplicationContext("beans.xml");
+		
+		//create the bean
+		Organization org = (Organization) ctx.getBean("myorg");
+		
+		//invoking the bean method
+		org.corporateSlogan();
+		
+		//close the application context (container)
+		((FileSystemXmlApplicationContext) ctx).close();
+	}
+
+}
